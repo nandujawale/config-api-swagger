@@ -1,0 +1,71 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "v1",
+    "title": "RVP-MPS Configuration",
+    "description": "API to retrieve and set configuration used in RVP MPS"
+  },
+  "paths": {
+    "/config/{key}": {
+      "get": {
+        "summary": "Get configuration",
+        "description": "Get configuration value for specific key",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Configuration for key found and being returned",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Configuration for key not found"
+          }
+        }
+      },
+      "post": {
+        "summary": "Set configuration",
+        "description": "Set configuration value for specific key",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Value for the key",
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Configuration for key set successfully"
+          }
+        }
+      }
+    }
+  }
+}
