@@ -1,0 +1,16 @@
+{
+    "apps": [{
+            "name": "config-api",
+            "script": "./app.js",
+            "watch": true,
+            "instances": 4,
+            "exec_mode": "cluster"
+        },
+        {
+            "name": "pm2-metrics",
+            "script": "./exporter.js",
+            "watch": true,
+            "instances": 1,
+            "exec_mode": "cluster"
+        }]
+}
